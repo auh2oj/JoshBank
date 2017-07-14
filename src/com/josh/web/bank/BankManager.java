@@ -27,5 +27,4 @@ public class BankManager {
 	protected void addAccount(String username, String password) {
 		accounts.put(username+","+password, new Account(username, password));
 	}
-	
 }

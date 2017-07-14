@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private BankManager manager;
+//	private BankManager manager;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -35,6 +35,7 @@ public class Login extends HttpServlet {
 		String pswd = request.getParameter("password");
 		PrintWriter writer = response.getWriter();
 		RequestDispatcher view;
+		BankManager manager = (BankManager) getServletContext().getAttribute("manager");
 		
         manager = (BankManager) getServletContext().getAttribute("manager");
         if (manager == null) {
