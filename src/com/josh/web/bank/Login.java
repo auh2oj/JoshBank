@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class BankManager
@@ -38,6 +39,8 @@ public class Login extends HttpServlet {
         manager = (BankManager) getServletContext().getAttribute("manager");
         if (manager == null) {
         		manager = new BankManager();
+        		// TODO: Later on, once MYSQL is incorporated:
+        		// Load account data from DB and make accounts from them and put them into the BankManager 
         		getServletContext().setAttribute("manager", manager);
         }
 		
@@ -47,8 +50,13 @@ public class Login extends HttpServlet {
 			view = request.getRequestDispatcher("/index.html");
 			view.include(request, response);
 		} else {
+			//TODO: Later on, add Session feature here:
+			// Create strictly a new session: request.getSession(true)
+			// Create a session attribute for the appropriate account
+			// Upon logout: destroy session: session.invalidate()
 			Account account = manager.getAccount(uname, pswd);
-			request.setAttribute("account", account);
+			HttpSession session = request.getSession(true);
+			session.setAttribute("account", account);
 			view = request.getRequestDispatcher("/HomePage");
 			view.forward(request, response);
 		}

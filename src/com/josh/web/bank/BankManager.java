@@ -10,7 +10,7 @@ public class BankManager {
 	public BankManager() {
         accounts = new HashMap<String, Account>();
 		//<for test purposes>
-		accounts.put("josh,josh", new Account("josh", "josh"));
+		addAccount("josh", "josh");
 		//</for test purposes>
 		
 		System.out.println("Successfully created new BankManager");
@@ -22,6 +22,10 @@ public class BankManager {
 
 	protected Account getAccount(String username, String password) {
 		return accounts.get(username+","+password);
+	}
+	
+	protected void addAccount(String username, String password) {
+		accounts.put(username+","+password, new Account(username, password));
 	}
 	
 }

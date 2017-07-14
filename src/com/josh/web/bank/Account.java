@@ -5,7 +5,7 @@ public class Account {
 	private final String username;
 
 	private final String password;
-	
+
 	private double balance = 0;
 
 	public Account(String username, String password) {
@@ -28,11 +28,15 @@ public class Account {
 		}
 	}
 	
-	public String getUsername() {
+	protected String getUsername() {
 		return username;
 	}
 	
-	public double getBalance() {
+	protected double getBalance() {
 		return balance;
+	}
+	
+	protected String getPassword() {
+		return password;
 	}
 }
