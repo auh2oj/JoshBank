@@ -37,13 +37,13 @@ public class Login extends HttpServlet {
 		RequestDispatcher view;
 		BankManager manager = (BankManager) getServletContext().getAttribute("manager");
 		
-        manager = (BankManager) getServletContext().getAttribute("manager");
-        if (manager == null) {
-        		manager = new BankManager();
-        		// TODO: Later on, once MYSQL is incorporated:
-        		// Load account data from DB and make accounts from them and put them into the BankManager 
-        		getServletContext().setAttribute("manager", manager);
-        }
+//        BankManager manager = (BankManager) sce.getServletContext().getAttribute("manager");
+//        if (manager == null) {
+//        		manager = new BankManager();
+//        		// TODO: Later on, once MYSQL is incorporated:
+//        		// Load account data from DB and make accounts from them and put them into the BankManager 
+//        		sce.getServletContext().setAttribute("manager", manager);
+//        }
 		
 		if (!manager.authenticate(uname, pswd)) {
 			response.setContentType("text/html");
