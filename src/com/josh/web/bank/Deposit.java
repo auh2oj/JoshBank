@@ -26,6 +26,7 @@ public class Deposit extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		response.setContentType("text/html");
 		PrintWriter writer = response.getWriter();
 		HttpSession session = request.getSession(false); 
 		if (session == null) {
@@ -37,7 +38,6 @@ public class Deposit extends HttpServlet {
 			account.deposit(depositAmount);
 			
 			writer.println("Your deposit has been recorded.");
-			response.setContentType("text/html");
 			request.getRequestDispatcher("home.jsp").include(request, response);
 		}
 		

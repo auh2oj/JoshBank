@@ -43,10 +43,8 @@ public class Login extends HttpServlet {
 			view = request.getRequestDispatcher("/index.html");
 			view.include(request, response);
 		} else {
-			//TODO: Later on, add Session feature here:
-			// Create strictly a new session: request.getSession(true)
-			// Create a session attribute for the appropriate account
-			// Upon logout: destroy session: session.invalidate()
+			//TODO: Make a cookie for each session that expires after some amount of time,
+			//invalidating the session.
 			Account account = manager.getAccount(uname, pswd);
 			HttpSession session = request.getSession(true);
 			session.setAttribute("account", account);
