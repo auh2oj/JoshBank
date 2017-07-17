@@ -37,14 +37,6 @@ public class Login extends HttpServlet {
 		RequestDispatcher view;
 		BankManager manager = (BankManager) getServletContext().getAttribute("manager");
 		
-//        BankManager manager = (BankManager) sce.getServletContext().getAttribute("manager");
-//        if (manager == null) {
-//        		manager = new BankManager();
-//        		// TODO: Later on, once MYSQL is incorporated:
-//        		// Load account data from DB and make accounts from them and put them into the BankManager 
-//        		sce.getServletContext().setAttribute("manager", manager);
-//        }
-		
 		if (!manager.authenticate(uname, pswd)) {
 			response.setContentType("text/html");
 			writer.println("Invalid username or password.\n\n");
@@ -58,7 +50,8 @@ public class Login extends HttpServlet {
 			Account account = manager.getAccount(uname, pswd);
 			HttpSession session = request.getSession(true);
 			session.setAttribute("account", account);
-			view = request.getRequestDispatcher("/HomePage");
+			request.setAttribute("account", account);
+			view = request.getRequestDispatcher("/home.jsp");
 			view.forward(request, response);
 		}
 	}

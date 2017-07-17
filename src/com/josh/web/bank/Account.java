@@ -28,11 +28,11 @@ public class Account {
 		}
 	}
 	
-	protected String getUsername() {
+	public String getUsername() {
 		return username;
 	}
 	
-	protected double getBalance() {
+	public double getBalance() {
 		return balance;
 	}
 	
