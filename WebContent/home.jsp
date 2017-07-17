@@ -11,7 +11,7 @@
 <body>
 
 	<%
-		account = (Account) request.getAttribute("account");
+		account = (Account) request.getSession().getAttribute("account");
 		username = account.getUsername(); 
 		balance = account.getBalance(); %>
 		<h1>Hello, <%= username %>!</h1>
@@ -19,7 +19,7 @@
 		<%-- Your session ID is: <%= request.getSession(false).getID() %> --%>
 
 	<br/><br/>
-	<a href="deposit.html">Make a deposit</a><br/>
+	<a href="account/deposit.html">Make a deposit</a><br/>
 	<a href="withdraw.html">Make a withdrawal</a><br/>
 	<a href="Logout">Logout</a><br/>
 	
