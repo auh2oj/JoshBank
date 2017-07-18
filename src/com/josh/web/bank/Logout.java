@@ -33,7 +33,7 @@ public class Logout extends HttpServlet {
 		request.getSession().invalidate();
 		
 		writer.println("You have successfully logged out.");
-		request.getRequestDispatcher("index.html").include(request, response);
+		request.getRequestDispatcher("index.html").include(request, response); //TODO: Fix URL here
 		
 		writer.close();
 

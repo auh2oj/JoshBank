@@ -38,7 +38,7 @@ public class Deposit extends HttpServlet {
 			account.deposit(depositAmount);
 			
 			writer.println("Your deposit has been recorded.");
-			request.getRequestDispatcher("home.jsp").include(request, response);
+			request.getRequestDispatcher("/account/home.jsp").include(request, response);
 		}
 		
 	}

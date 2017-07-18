@@ -3,11 +3,11 @@ package com.josh.web.bank;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BankManager {
+public final class BankManager {
 
 	private Map<String, Account> accounts;
 	
-	public BankManager() {
+	protected BankManager() {
         accounts = new HashMap<String, Account>();
 		//<for test purposes>
 		addAccount("josh", "josh");
@@ -16,15 +16,15 @@ public class BankManager {
 		System.out.println("Successfully created new BankManager");
 	}
 	
-	protected boolean authenticate(String username, String password) {
+	protected final boolean authenticate(String username, String password) {
 		return accounts.containsKey(username+","+password);
 	}
 
-	protected Account getAccount(String username, String password) {
+	protected final Account getAccount(String username, String password) {
 		return accounts.get(username+","+password);
 	}
 	
-	protected void addAccount(String username, String password) {
+	protected final void addAccount(String username, String password) {
 		accounts.put(username+","+password, new Account(username, password));
 	}
 }

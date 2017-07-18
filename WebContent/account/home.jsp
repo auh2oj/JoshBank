@@ -19,9 +19,9 @@
 		<%-- Your session ID is: <%= request.getSession(false).getID() %> --%>
 
 	<br/><br/>
-	<a href="account/deposit.html">Make a deposit</a><br/>
+	<a href="deposit.html">Make a deposit</a><br/>
 	<a href="withdraw.html">Make a withdrawal</a><br/>
-	<a href="Logout">Logout</a><br/>
+	<a href="/JoshBank/Logout">Logout</a><br/>
 	
 	<br/><br/>
 	<a href="Delete">Delete account</a>

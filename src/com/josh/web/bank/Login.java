@@ -48,8 +48,9 @@ public class Login extends HttpServlet {
 			Account account = manager.getAccount(uname, pswd);
 			HttpSession session = request.getSession(true);
 			session.setAttribute("account", account);
-			view = request.getRequestDispatcher("/home.jsp");
-			view.forward(request, response);
+//			view = request.getRequestDispatcher("/home.jsp");
+//			view.forward(request, response);
+			response.sendRedirect("/JoshBank/account/home.jsp");
 		}
 	}
 }
