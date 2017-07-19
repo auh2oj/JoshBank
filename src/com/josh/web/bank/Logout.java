@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class Logout
@@ -30,10 +31,14 @@ public class Logout extends HttpServlet {
 		PrintWriter writer = response.getWriter();
 		response.setContentType("text/html");
 		
-		request.getSession().invalidate();
+		HttpSession session = request.getSession(false);
+		if (session != null) {
+			session.invalidate();
+		}
 		
-		writer.println("You have successfully logged out.");
-		request.getRequestDispatcher("index.html").include(request, response); //TODO: Fix URL here
+		writer.println("You have successfully logged out. ");
+		writer.println("<a href='/JoshBank/index.html'>Return to login page</a>.");
+//		request.getRequestDispatcher("index.html").include(request, response); //TODO: Fix URL here
 		
 		writer.close();
 

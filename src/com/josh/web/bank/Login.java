@@ -37,6 +37,7 @@ public class Login extends HttpServlet {
 		RequestDispatcher view;
 		BankManager manager = (BankManager) getServletContext().getAttribute("manager");
 		
+		//TODO: delegate this authentication action to a filter
 		if (!manager.authenticate(uname, pswd)) {
 			response.setContentType("text/html");
 			writer.println("Invalid username or password.\n\n");
