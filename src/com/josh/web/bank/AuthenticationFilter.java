@@ -56,7 +56,7 @@ public class AuthenticationFilter implements Filter {
 //			view.include(req, res);
 //			res.sendRedirect("/JoshBank/index.html");
 		} else {
-			c.log("Authentication OK");
+			c.log("Access OK");
 		// pass the request along the filter chain
 			chain.doFilter(request, response);
 		}

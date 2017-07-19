@@ -12,6 +12,7 @@ public class Account {
 		this.username = username;
 		this.password = password;
 		System.out.println("Successfully created new account.");
+		//TODO: Later, include field for date & time account was created
 	}
 	
 	public void deposit(double amount) {
