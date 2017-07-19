@@ -57,6 +57,9 @@ public class AuthenticationFilter implements Filter {
 //			res.sendRedirect("/JoshBank/index.html");
 		} else {
 			c.log("Access OK");
+			if (session != null) {
+				c.log("Current session: "+session.getId());
+			}
 		// pass the request along the filter chain
 			chain.doFilter(request, response);
 		}

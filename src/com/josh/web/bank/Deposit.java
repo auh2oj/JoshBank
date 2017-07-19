@@ -29,17 +29,17 @@ public class Deposit extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter writer = response.getWriter();
 		HttpSession session = request.getSession(false); 
-//		if (session == null) {
-//			writer.println("You must login first.");
-//			request.getRequestDispatcher("index.html").include(request, response);
-//		} else {
+		if (session == null) {
+			writer.println("You must login first.");
+			request.getRequestDispatcher("index.html").include(request, response);
+		} else {
 			Account account = (Account) session.getAttribute("account");
 			Double depositAmount = Double.parseDouble(request.getParameter("deposit"));
 			account.deposit(depositAmount);
 			
 			writer.println("Your deposit has been recorded.");
 			request.getRequestDispatcher("/account/home.jsp").include(request, response);
-//		}
+		}
 		
 	}
 

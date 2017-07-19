@@ -33,13 +33,15 @@ public class Logout extends HttpServlet {
 		
 		HttpSession session = request.getSession(false);
 		if (session != null) {
+			System.out.println("Session " + session.getId() + " logging out...");
 			session.invalidate();
 		}
 		
-		writer.println("You have successfully logged out. ");
-		writer.println("<a href='/JoshBank/index.html'>Return to login page</a>.");
-//		request.getRequestDispatcher("index.html").include(request, response); //TODO: Fix URL here
-		
+//		writer.println("You have successfully logged out. ");
+//		writer.println("<a href='/JoshBank/index.html'>Return to login page</a>.");
+
+		System.out.println("Logout successful.");
+		response.sendRedirect("/JoshBank/index.html");
 		writer.close();
 
 	}
