@@ -40,8 +40,8 @@ public class Logout extends HttpServlet {
 //		writer.println("You have successfully logged out. ");
 //		writer.println("<a href='/JoshBank/index.html'>Return to login page</a>.");
 
-		System.out.println("Logout successful.");
-		response.sendRedirect("/JoshBank/index.html");
+//		System.out.println("Logout successful.");h
+		response.sendRedirect("logout.html");
 		writer.close();
 
 	}

@@ -48,7 +48,7 @@ public class AuthenticationFilter implements Filter {
 		
 		HttpSession session = req.getSession(false);
 		
-		if (session == null && uri.contains("account")) {
+		if (session == null && !uri.contains("index.html") && !uri.contains("Login") && !uri.contains("ogout")/*uri.contains("account")*/) {
 			c.log("Unauthorized resource request");
 			res.getWriter().println("You do not have access to this resource. Please "
 					+ "<a href='/JoshBank/index.html'>login</a> first.");
