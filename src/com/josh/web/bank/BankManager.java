@@ -1,5 +1,6 @@
 package com.josh.web.bank;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,7 +9,7 @@ public final class BankManager {
 	private Map<String, Account> accounts;
 	
 	protected BankManager() {
-        accounts = new HashMap<String, Account>();
+        accounts = Collections.synchronizedMap(new HashMap<String, Account>());
 		//<for test purposes>
 		addAccount("josh", "josh");
 		//</for test purposes>
