@@ -28,20 +28,21 @@ public class Deposit extends HttpServlet {
 		
 		response.setContentType("text/html");
 		PrintWriter writer = response.getWriter();
-		HttpSession session = request.getSession(false); 
+		HttpSession session = request.getSession(false);
+		
 		if (session == null) {
 			writer.println("You must login first.");
 //			request.getRequestDispatcher("index.html").include(request, response);
 			response.sendRedirect("index.html");
 		} else {
-			Account account = (Account) session.getAttribute("account");
-			Double depositAmount = Double.parseDouble(request.getParameter("deposit"));
-			account.deposit(depositAmount);
-			
-			writer.println("Your deposit has been recorded.");
-			System.out.println("Deposit recorded. Deposit amount: " + depositAmount);
-//			request.getRequestDispatcher("/account/home.jsp").include(request, response);
-			response.sendRedirect("account/home.jsp");
+			synchronized(session) {
+				Account account = (Account) session.getAttribute("account");
+				Double depositAmount = Double.parseDouble(request.getParameter("deposit"));
+				account.deposit(depositAmount);
+				
+				System.out.println("Deposit recorded. Deposit amount: " + depositAmount);
+				response.sendRedirect("account/home.jsp");
+			}
 		}
 		
 	}

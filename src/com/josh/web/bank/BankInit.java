@@ -31,6 +31,7 @@ public class BankInit implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce)  { 
         BankManager manager = new BankManager();
     		// TODO: Later on, once MYSQL is incorporated:
+        // Set DB connection as context attribute
     		// Load account data from DB and make accounts from them and put them into the BankManager 
     		sce.getServletContext().setAttribute("manager", manager);
     }

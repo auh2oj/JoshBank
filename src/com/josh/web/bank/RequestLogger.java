@@ -39,6 +39,7 @@ public class RequestLogger implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+				
 		//Log request parameters
 		Enumeration<String> params = ((HttpServletRequest) request).getParameterNames();
 		while (params.hasMoreElements()) {
