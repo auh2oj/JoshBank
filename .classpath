@@ -42,19 +42,5 @@
 	<classpathentry kind="lib" path="/Library/hibernate-release-5.2.10.Final/lib/optional/c3p0/hibernate-c3p0-5.2.10.Final.jar"/>
 	<classpathentry kind="lib" path="/Library/hibernate-release-5.2.10.Final/lib/optional/c3p0/c3p0-0.9.5.2.jar"/>
 	<classpathentry kind="lib" path="/Library/hibernate-release-5.2.10.Final/lib/optional/c3p0/mchange-commons-java-0.2.11.jar"/>
-	<classpathentry kind="lib" path="/Library/hibernate-release-5.2.10.Final/lib/optional/c3p0/Library/hibernate-release-5.2.10.Final/lib/optional/ehcache/hibernate-ehcache-5.2.10.Final.jar"/>
-	<classpathentry kind="lib" path="/Library/hibernate-release-5.2.10.Final/lib/optional/c3p0/Library/hibernate-release-5.2.10.Final/lib/optional/ehcache/ehcache-2.10.3.jar"/>
-	<classpathentry kind="lib" path="/Library/hibernate-release-5.2.10.Final/lib/optional/c3p0/Library/hibernate-release-5.2.10.Final/lib/optional/ehcache/slf4j-api-1.7.7.jar"/>
-	<classpathentry kind="lib" path="/Library/hibernate-release-5.2.10.Final/lib/optional/c3p0/Library/hibernate-release-5.2.10.Final/lib/optional/infinispan/hibernate-infinispan-5.2.10.Final-tests.jar"/>
-	<classpathentry kind="lib" path="/Library/hibernate-release-5.2.10.Final/lib/optional/c3p0/Library/hibernate-release-5.2.10.Final/lib/optional/infinispan/hibernate-infinispan-5.2.10.Final.jar"/>
-	<classpathentry kind="lib" path="/Library/hibernate-release-5.2.10.Final/lib/optional/c3p0/Library/hibernate-release-5.2.10.Final/lib/optional/infinispan/infinispan-commons-8.2.5.Final.jar"/>
-	<classpathentry kind="lib" path="/Library/hibernate-release-5.2.10.Final/lib/optional/c3p0/Library/hibernate-release-5.2.10.Final/lib/optional/infinispan/infinispan-core-8.2.5.Final.jar"/>
-	<classpathentry kind="lib" path="/Library/hibernate-release-5.2.10.Final/lib/optional/c3p0/Library/hibernate-release-5.2.10.Final/lib/optional/infinispan/jgroups-3.6.7.Final.jar"/>
-	<classpathentry kind="lib" path="/Library/hibernate-release-5.2.10.Final/lib/optional/c3p0/Library/hibernate-release-5.2.10.Final/lib/optional/infinispan/jboss-marshalling-osgi-1.4.10.Final.jar"/>
-	<classpathentry kind="lib" path="/Library/hibernate-release-5.2.10.Final/lib/optional/c3p0/Library/hibernate-release-5.2.10.Final/lib/optional/infinispan/jboss-transaction-api_1.1_spec-1.0.1.Final.jar"/>
-	<classpathentry kind="lib" path="/Library/hibernate-release-5.2.10.Final/lib/optional/c3p0/Library/hibernate-release-5.2.10.Final/lib/optional/proxool/hibernate-proxool-5.2.10.Final.jar"/>
-	<classpathentry kind="lib" path="/Library/hibernate-release-5.2.10.Final/lib/optional/c3p0/Library/hibernate-release-5.2.10.Final/lib/optional/proxool/proxool-0.8.3.jar"/>
-	<classpathentry kind="lib" path="/Library/hibernate-release-5.2.10.Final/lib/optional/c3p0/Library/hibernate-release-5.2.10.Final/lib/envers/hibernate-envers-5.2.10.Final.jar"/>
-	<classpathentry kind="lib" path="/Library/hibernate-release-5.2.10.Final/lib/optional/c3p0/Library/hibernate-release-5.2.10.Final/lib/jpa-metamodel-generator/hibernate-jpamodelgen-5.2.10.Final.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

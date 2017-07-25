@@ -4,13 +4,15 @@ import java.util.Date;
 
 public class Account {
 
-	private final String username;
+	private String username;
 
-	private final String password;
+	private String password;
 	
-	private final Date dateCreated;
+	private Date dateCreated;
 
 	private double balance = 0;
+	
+	public Account() {}
 
 	public Account(String username, String password) {
 		this.username = username;
@@ -18,20 +20,6 @@ public class Account {
 		this.dateCreated = new Date();
 		System.out.println("Successfully created new account.");
 		//TODO: Later, include field for date & time account was created
-	}
-	
-	public void deposit(double amount) {
-		this.balance += amount;
-		System.out.println("New balance: " + balance);
-	}
-	
-	public void withdraw(double amount) {
-		if (this.balance < amount || this.balance < 20) {
-			System.out.println("Insufficient funds.");
-		} else {
-			this.balance -= amount;
-			System.out.println("New balance: " + balance);
-		}
 	}
 	
 	public String getUsername() {
@@ -48,5 +36,17 @@ public class Account {
 	
 	protected String getPassword() {
 		return password;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void setBalance(double balance) {
+		this.balance = balance;
 	}
 }

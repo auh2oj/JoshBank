@@ -28,4 +28,19 @@ public final class BankManager {
 	protected final void addAccount(String username, String password) {
 		accounts.put(username+","+password, new Account(username, password));
 	}
+	
+	final void deposit(Account account, double amount) {
+		account.setBalance(account.getBalance() + amount);
+		System.out.println("New balance: " + account.getBalance());
+	}
+	
+	final void withdraw(Account account, double amount) {
+		double balance = account.getBalance();
+		if (balance < amount || balance < 20) {
+			System.out.println("Insufficient funds.");
+		} else {
+			account.setBalance(balance - amount);
+			System.out.println("New balance: " + account.getBalance());
+		}
+	}
 }

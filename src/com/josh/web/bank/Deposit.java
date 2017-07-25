@@ -36,9 +36,12 @@ public class Deposit extends HttpServlet {
 			response.sendRedirect("index.html");
 		} else {
 			synchronized(session) {
+				BankManager manager = (BankManager) session.getServletContext().getAttribute("manager");
+				
 				Account account = (Account) session.getAttribute("account");
 				Double depositAmount = Double.parseDouble(request.getParameter("deposit"));
-				account.deposit(depositAmount);
+				manager.deposit(account, depositAmount);
+//				account.deposit(depositAmount);
 				
 				System.out.println("Deposit recorded. Deposit amount: " + depositAmount);
 				response.sendRedirect("account/home.jsp");
