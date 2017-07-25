@@ -10,9 +10,14 @@
 		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/JOSHDATA</property>
 		<property name="hibernate.connection.username">root</property>
 		<property name="hibernate.connection.password">root</property>
+		<property name="hibernate.current_session_context_class">thread</property>
+		
+		<!-- Drop and then re-create schema on SessionFactory build, for testing. -->  
+        <property name="hbm2ddl.auto">create</property>  
 
 		<!-- List of XML mapping files -->
-		<mapping resource="Account.hbm.xml" />
+		<mapping resource="Account.hbm.xml"/>
+		<mapping class="com.josh.web.bank.Account"/>
 	
 	</session-factory>
 </hibernate-configuration>

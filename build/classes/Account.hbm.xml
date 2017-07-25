@@ -5,7 +5,7 @@
  
  <hibernate-mapping>
  
- 	<class name="Account" table="ACCOUNTS">
+ 	<class name="com.josh.web.bank.Account" table="ACCOUNTS">
  	
  		<meta attribute="description">
  			This class contains account information.
@@ -16,7 +16,7 @@
  		<property name="username" column="USERNAME" type="string" />
  		<property name="password" column="PASSWORD" type="string" />
  		<property name="balance" column="BALANCE" type="double" />
- 		<property name="date_created" column="DATE" type="date" />
+ 		<property name="dateCreated" column="DATE" type="date" />
  		
  	
  	</class>

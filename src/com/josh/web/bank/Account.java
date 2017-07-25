@@ -4,11 +4,17 @@ import java.util.Date;
 
 public class Account {
 
+	private int id;
+
 	private String username;
 
 	private String password;
 	
 	private Date dateCreated;
+
+	public void setDateCreated(Date dateCreated) {
+		this.dateCreated = dateCreated;
+	}
 
 	private double balance = 0;
 	
@@ -20,6 +26,14 @@ public class Account {
 		this.dateCreated = new Date();
 		System.out.println("Successfully created new account.");
 		//TODO: Later, include field for date & time account was created
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	public String getUsername() {
