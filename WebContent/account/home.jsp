@@ -11,7 +11,7 @@
 <body>
 
 	<%
-		account = (Account) request.getSession().getAttribute("account");
+		account = (Account) request.getSession(false).getAttribute("account");
 		username = account.getUsername(); 
 		balance = account.getBalance();
 	%>

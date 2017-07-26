@@ -69,7 +69,7 @@ public final class BankManager {
 		return accountID;
 	}
 	
-	final void deposit(Integer accountID, double amount) {
+	final Account deposit(Integer accountID, double amount) {
 //		account.setBalance(account.getBalance() + amount);
 //		System.out.println("New balance: " + account.getBalance());
 
@@ -93,7 +93,7 @@ public final class BankManager {
 			session.close();
 		}
 		
-		
+		return account;
 		
 		
 	}

@@ -33,8 +33,8 @@ public class Deposit extends HttpServlet {
 		if (session == null) {
 			writer.println("You must login first.");
 			System.out.println("User not logged in.");
-//			request.getRequestDispatcher("index.html").include(request, response);
-			response.sendRedirect("index.html");
+			request.getRequestDispatcher("index.html").include(request, response);
+//			response.sendRedirect("index.html");
 		} else {
 			synchronized(session) {
 				BankManager manager = (BankManager) session.getServletContext().getAttribute("manager");
@@ -42,8 +42,8 @@ public class Deposit extends HttpServlet {
 				Account account = (Account) session.getAttribute("account");
 				Integer accountID = account.getId();
 				Double depositAmount = Double.parseDouble(request.getParameter("deposit"));
-				manager.deposit(accountID, depositAmount);
-//				account.deposit(depositAmount);
+				account = manager.deposit(accountID, depositAmount);
+				request.getSession(false).setAttribute("account", account);
 				
 				System.out.println("Deposit recorded. Deposit amount: " + depositAmount);
 				response.sendRedirect("account/home.jsp");
