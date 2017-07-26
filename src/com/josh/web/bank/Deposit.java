@@ -32,6 +32,7 @@ public class Deposit extends HttpServlet {
 		
 		if (session == null) {
 			writer.println("You must login first.");
+			System.out.println("User not logged in.");
 //			request.getRequestDispatcher("index.html").include(request, response);
 			response.sendRedirect("index.html");
 		} else {
@@ -39,8 +40,9 @@ public class Deposit extends HttpServlet {
 				BankManager manager = (BankManager) session.getServletContext().getAttribute("manager");
 				
 				Account account = (Account) session.getAttribute("account");
+				Integer accountID = account.getId();
 				Double depositAmount = Double.parseDouble(request.getParameter("deposit"));
-				manager.deposit(account, depositAmount);
+				manager.deposit(accountID, depositAmount);
 //				account.deposit(depositAmount);
 				
 				System.out.println("Deposit recorded. Deposit amount: " + depositAmount);
