@@ -82,6 +82,7 @@ public final class BankManager {
 			account = (Account) session.get(Account.class, accountID);
 			account.setBalance(account.getBalance() + amount);
 			accounts.put(account.getUsername()+","+account.getPassword(), account);
+			session.update(account);
 			tx.commit();
 			
 			System.out.println("New balance: " + account.getBalance());
@@ -115,6 +116,7 @@ public final class BankManager {
 			account = (Account) session.get(Account.class, accountID);
 			account.setBalance(account.getBalance() - amount);
 			accounts.put(account.getUsername()+","+account.getPassword(), account);
+			session.update(account);
 			tx.commit();
 			
 			System.out.println("New balance: " + account.getBalance());

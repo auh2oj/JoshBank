@@ -50,14 +50,14 @@ public class Withdraw extends HttpServlet {
 					System.out.println("Insufficient funds. Withdrawal unsuccessful.");
 					request.getRequestDispatcher("account/home.jsp").include(request, response);
 				} else if (balance < withdrawAmount) { // withdrawal amount must be less than what's already present in account
-					writer.println("Insufficient funds. You do not have enough money in your account to withdraw this amount of money.");
+					writer.println("Insufficient funds. You do not have enough money in your account to withdraw that amount of money.");
 					System.out.println("Insufficient funds. Withdrawal unsuccessful.");
 					request.getRequestDispatcher("account/home.jsp").include(request, response);
 				} else {
 					account = manager.withdraw(accountID, withdrawAmount);
 					request.getSession(false).setAttribute("account", account);
 					
-					System.out.println("Deposit recorded. Deposit amount: " + withdrawAmount);
+					System.out.println("Witdrawal recorded. Withdraw amount: " + withdrawAmount);
 					response.sendRedirect("account/home.jsp");
 				}
 			}
