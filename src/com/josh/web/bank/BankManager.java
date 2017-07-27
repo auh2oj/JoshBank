@@ -98,14 +98,37 @@ public final class BankManager {
 		
 	}
 	
-	final void withdraw(Account account, double amount) {
-		double balance = account.getBalance();
-		if (balance < amount || balance < 20) {
-			System.out.println("Insufficient funds.");
-		} else {
-			account.setBalance(balance - amount);
+	final Account withdraw(Integer accountID, double amount) {
+//		double balance = account.getBalance();
+//		if (balance < amount || balance < 20) {
+//			System.out.println("Insufficient funds.");
+//		} else {
+//			account.setBalance(balance - amount);
+//			System.out.println("New balance: " + account.getBalance());
+//		}
+		
+		Session session = factory.openSession();
+		Transaction tx = null;
+		Account account = null;
+		try {
+			tx = session.beginTransaction();
+			account = (Account) session.get(Account.class, accountID);
+			account.setBalance(account.getBalance() - amount);
+			accounts.put(account.getUsername()+","+account.getPassword(), account);
+			tx.commit();
+			
 			System.out.println("New balance: " + account.getBalance());
+			System.out.println("Current ballance: " + accounts.get(account.getUsername()+","+account.getPassword()).getBalance());
+		} catch (HibernateException e) {
+			if (tx != null) {tx.rollback();}
+			e.printStackTrace();
+		} finally {
+			session.close();
 		}
+		
+		return account;
+		
+		
 	}
 	
 	final void deleteAccount(String username, String password) {

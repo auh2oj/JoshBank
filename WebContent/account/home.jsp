@@ -30,8 +30,8 @@
 	Account created on: <%= account.getDateCreated() %>
 
 	<br/><br/>
-	<a href="deposit.html">Make a deposit</a><br/>
-	<a href="withdraw.html">Make a withdrawal</a><br/>
+	<a href="/JoshBank/account/deposit.html">Make a deposit</a><br/>
+	<a href="/JoshBank/account/withdraw.html">Make a withdrawal</a><br/>
 	<a href="/JoshBank/Logout">Logout</a><br/>
 	
 	<br/><br/>
