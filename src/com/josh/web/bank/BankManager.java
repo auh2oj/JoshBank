@@ -139,4 +139,9 @@ public final class BankManager {
 			System.out.println("Error removing account. Please try again.");
 		}
 	}
+	
+	// TODO: Add level-2 cache for application
+	
+	// TODO: For version 2.0: Add admin feature that lists all account info
+	// For this feature, use query-level cache, and set a cache region for accounts
 }
