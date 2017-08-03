@@ -33,11 +33,13 @@ public class CreateAccount extends HttpServlet {
 		
 		RequestDispatcher view;
 		BankManager manager = (BankManager) getServletContext().getAttribute("manager");
-		
-		//TODO: Check whether username exists by checking the DB. If so, do not create the account.
-		
+				
 		if (!password.equals(confirm)) { // if passwords don't match
 			writer.println("Passwords do not match.</br></br>");
+			view = request.getRequestDispatcher("/createAccount.html");
+			view.include(request, response);
+		} else if (manager.accountExists(username)) { // if account with username already exists in DB
+			writer.println("An account with that username already exists. Please use a different username.");
 			view = request.getRequestDispatcher("/createAccount.html");
 			view.include(request, response);
 		} else {

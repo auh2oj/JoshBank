@@ -2,12 +2,21 @@ package com.josh.web.bank;
 
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.ParameterExpression;
+import javax.persistence.criteria.Root;
+
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 public final class BankManager {
 
@@ -42,6 +51,25 @@ public final class BankManager {
 
 	protected final Account getAccount(String username, String password) {
 		return accounts.get(username+","+password);
+	}
+	
+	protected final boolean accountExists(String username) {
+		Session session = factory.openSession();
+//		Criteria cr = session.createCriteria(Account.class);
+//		cr.add(Restrictions.eq("username", username));
+//		List results = cr.list();
+		
+		CriteriaBuilder cb = session.getCriteriaBuilder();
+		CriteriaQuery<Account> cq = cb.createQuery(Account.class);
+		Root<Account> a = cq.from(Account.class);
+		ParameterExpression<String> pe = cb.parameter(String.class);
+		cq.select(a).where(cb.equal(a.get("username"), pe));
+		
+		TypedQuery<Account> tq = session.createQuery(cq);
+		tq.setParameter(pe, username);
+		List<Account> results = tq.getResultList();
+				
+		return results.size() > 0;
 	}
 	
 	protected final void addAccountTest(String username, String password) {
