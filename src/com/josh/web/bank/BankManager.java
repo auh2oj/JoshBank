@@ -37,6 +37,15 @@ public final class BankManager {
         // username+SHA256(password). If that combo doesn't exist, immediately reject.
         // Else, retrieve account, get ID, search DB. If result is invalid, reject.
 
+        // TODO: Add transaction logger that logs different transactions to a separate DB
+        // Rough model:
+        /* Create Table Transactions (
+        			TransactionID int not null auto_increment primary key,
+        			AccountID int not null foreign key references Accounts(ID),
+        			TransactionType char(20) not null,
+        			TransactionAmount double
+        				);
+        	*/
         
 		//<for test purposes>
 		addAccount("josh", "josh");
@@ -55,10 +64,6 @@ public final class BankManager {
 	
 	protected final boolean accountExists(String username) {
 		Session session = factory.openSession();
-//		Criteria cr = session.createCriteria(Account.class);
-//		cr.add(Restrictions.eq("username", username));
-//		List results = cr.list();
-		
 		CriteriaBuilder cb = session.getCriteriaBuilder();
 		CriteriaQuery<Account> cq = cb.createQuery(Account.class);
 		Root<Account> a = cq.from(Account.class);
