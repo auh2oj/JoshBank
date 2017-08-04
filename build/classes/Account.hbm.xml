@@ -13,7 +13,9 @@
  		<id name="id" type="int" column="id">
  			<generator class="native" />
  		</id>
- 		<property name="username" column="USERNAME" type="string" />
+ 		<properties name="username" unique="true">
+ 			<property name="username" column="USERNAME" type="string" />
+ 		</properties>
  		<property name="password" column="PASSWORD" type="string" />
  		<property name="balance" column="BALANCE" type="double" />
  		<property name="dateCreated" column="DATE" type="date" />
