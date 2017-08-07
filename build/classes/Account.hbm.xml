@@ -10,15 +10,21 @@
  		<meta attribute="description">
  			This class contains account information.
  		</meta>
- 		<id name="id" type="int" column="id">
+ 		<id name="id" type="int" column="ID">
  			<generator class="native" />
  		</id>
  		<properties name="username" unique="true">
- 			<property name="username" column="USERNAME" type="string" />
+ 			<property name="username" column="USERNAME" type="string" not-null="true"/>
  		</properties>
- 		<property name="password" column="PASSWORD" type="string" />
- 		<property name="balance" column="BALANCE" type="double" />
- 		<property name="dateCreated" column="DATE" type="date" />
+ 		<property name="password" type="string">
+ 			<column name="PASSWORD" not-null="true" />
+ 		</property>
+ 		<property name="balance" type="double">
+ 			<column name="BALANCE" not-null="true" check="(BALANCE >= 0)" />
+ 		</property>
+ 		<property name="dateCreated" type="date" >
+ 			<column name="DATE_CREATED" not-null="true" />
+ 		</property>
  		
  	
  	</class>
