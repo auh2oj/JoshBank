@@ -42,7 +42,7 @@ public class CreateAccount extends HttpServlet {
 			writer.println("An account with that username already exists. Please use a different username.");
 			view = request.getRequestDispatcher("/createAccount.html");
 			view.include(request, response);
-		} else {
+		} else { //create account
 			writer.println("Username: "+username);
 			writer.print("Password: "+password);			
 		}

@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -13,6 +16,7 @@ import javax.persistence.criteria.Root;
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -23,8 +27,11 @@ public final class BankManager {
 	private Map<String, Account> accounts;
 	private SessionFactory factory;
 	
+	private EntityManager em;
+	
 	protected BankManager(SessionFactory factory) {
 		this.factory = factory;
+
 		
         accounts = Collections.synchronizedMap(new HashMap<String, Account>());
         //TODO: Load all accounts from database
@@ -63,18 +70,26 @@ public final class BankManager {
 	}
 	
 	protected final boolean accountExists(String username) {
-		Session session = factory.openSession();
-		CriteriaBuilder cb = session.getCriteriaBuilder();
-		CriteriaQuery<Account> cq = cb.createQuery(Account.class);
-		Root<Account> a = cq.from(Account.class);
-		ParameterExpression<String> pe = cb.parameter(String.class);
-		cq.select(a).where(cb.equal(a.get("username"), pe));
+		//TODO: Convert to HQL
 		
-		TypedQuery<Account> tq = session.createQuery(cq);
-		tq.setParameter(pe, username);
-		List<Account> results = tq.getResultList();
+		Session session = factory.openSession();
+		for (String key : accounts.keySet()) {
+			if (key.startsWith(username)) {return true;}
+		}
+		return false;
+		
+//		CriteriaBuilder cb = session.getCriteriaBuilder();
+//		
+//		CriteriaQuery<Account> cq = cb.createQuery(Account.class);
+//		Root<Account> a = cq.from(Account.class);
+//		ParameterExpression<String> pe = cb.parameter(String.class);
+//		cq.select(a).where(cb.equal(a.get("username"), pe));
+//		
+//		TypedQuery<Account> tq = session.createQuery(cq);
+//		tq.setParameter(pe, username);
+//		List<Account> results = tq.getResultList();
 				
-		return results.size() > 0;
+		//return results.size() > 0;
 	}
 	
 	protected final void addAccountTest(String username, String password) {
