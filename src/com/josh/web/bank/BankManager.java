@@ -31,6 +31,7 @@ public final class BankManager {
 	
 	protected BankManager(SessionFactory factory) {
 		this.factory = factory;
+		//this.em = em;
 
 		
         accounts = Collections.synchronizedMap(new HashMap<String, Account>());
@@ -71,25 +72,12 @@ public final class BankManager {
 	
 	protected final boolean accountExists(String username) {
 		//TODO: Convert to HQL
-		
 		Session session = factory.openSession();
-		for (String key : accounts.keySet()) {
-			if (key.startsWith(username)) {return true;}
-		}
-		return false;
+		Account account = null;
 		
-//		CriteriaBuilder cb = session.getCriteriaBuilder();
-//		
-//		CriteriaQuery<Account> cq = cb.createQuery(Account.class);
-//		Root<Account> a = cq.from(Account.class);
-//		ParameterExpression<String> pe = cb.parameter(String.class);
-//		cq.select(a).where(cb.equal(a.get("username"), pe));
-//		
-//		TypedQuery<Account> tq = session.createQuery(cq);
-//		tq.setParameter(pe, username);
-//		List<Account> results = tq.getResultList();
-				
-		//return results.size() > 0;
+		Criteria c = session.createCriteria(Account.class);
+		c.add(Restrictions.eq("username", username));
+		return c.list().size() > 0;
 	}
 	
 	protected final void addAccountTest(String username, String password) {

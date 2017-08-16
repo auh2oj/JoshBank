@@ -13,9 +13,7 @@
  		<id name="id" type="int" column="ID">
  			<generator class="native" />
  		</id>
- 		<properties name="username" unique="true">
- 			<property name="username" column="USERNAME" type="string" not-null="true"/>
- 		</properties>
+ 		<property name="username" column="USERNAME" type="string" not-null="true" unique="true"/>
  		<property name="password" type="string">
  			<column name="PASSWORD" not-null="true" />
  		</property>

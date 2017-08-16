@@ -1,5 +1,8 @@
 package com.josh.web.bank;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
@@ -33,6 +36,12 @@ public class BankInit implements ServletContextListener {
      */
     public void contextInitialized(ServletContextEvent sce)  { 
     		SessionFactory factory;
+    		//TODO: Include EntityManager
+//    		EntityManager em;
+//    		
+//    		EntityManagerFactory emf = Persistence.createEntityManagerFactory("BankManager");
+//    		em = emf.createEntityManager();
+    		
     		try {
     			factory = new Configuration().configure().buildSessionFactory();
     		} catch (Throwable e) {
