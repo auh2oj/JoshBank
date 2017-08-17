@@ -67,7 +67,16 @@ public final class BankManager {
 	}
 
 	protected final Account getAccount(String username, String password) {
-		return accounts.get(username+","+password);
+		
+		Session session = factory.openSession();
+		Account account = null;
+		
+		Criteria c = session.createCriteria(Account.class);
+		c.add(Restrictions.eq("username", username)).add(Restrictions.eq("password", password));
+		return (Account) c.list().get(0);
+		
+		
+		//return accounts.get(username+","+password);
 	}
 	
 	protected final boolean accountExists(String username) {
